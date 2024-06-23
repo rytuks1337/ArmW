@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    android:orientation="horizontal"
+    android:background="@drawable/tournament_item_background">
+
+
+    <LinearLayout
+        android:id="@+id/tvLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:background="@drawable/tournament_item_background">
+
+        <!-- Month TextView -->
+        <TextView
+            android:id="@+id/tvMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/jan"
+            android:textSize="12sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"/>
+
+        <!-- Day TextView -->
+        <TextView
+            android:id="@+id/tvDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_01"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="16dp"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/tv_tournament_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="serif"
+        android:text="Name"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:textSize="20sp" />
+
+
+
+</LinearLayout>
