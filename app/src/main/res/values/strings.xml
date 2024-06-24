@@ -30,4 +30,15 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_tournament_details">tournament_details</string>
+    <string name="hello">Hello</string>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="change_picture">Change Picture</string>
+    <string name="name">Name</string>
+    <string name="name_hint">Enter your name</string>
+    <string name="email">Email</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="phone">Phone</string>
+    <string name="phone_hint">Enter your phone number</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
 </resources>

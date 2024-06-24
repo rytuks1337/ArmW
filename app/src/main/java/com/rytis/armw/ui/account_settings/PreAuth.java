@@ -1,4 +1,4 @@
-package com.rytis.armw.ui.dashboard;
+package com.rytis.armw.ui.account_settings;
 
 import android.content.Intent;
 import android.os.Bundle;

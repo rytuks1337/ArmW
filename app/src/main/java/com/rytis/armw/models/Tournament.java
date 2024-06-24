@@ -5,17 +5,20 @@ public class Tournament {
 
 
     public String name;
-    public String date_day;
-    public String date_month;
-    public int date_n;
 
-
-    public Tournament(String date_month, String date_day, String name) {
-        this.date_month = date_month;
-        this.date_day = date_day;
+    public Tournament(String name, String date, String time_from, String time_to, String description, Integer ID) {
+        this.id = ID;
         this.name = name;
+        this.date = date;
+        this.time_from = time_from;
+        this.time_to = time_to;
+        this.description = description;
+
     }
 
-
+    public String date;
+    public String time_from, time_to ;
+    public String description;
+    public Integer id;
 
 }

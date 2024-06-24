@@ -36,15 +36,29 @@
                 android:layout_marginBottom="8dp" />
 
             <!-- Tournament Date -->
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tournament_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date: January 1, 2022"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_marginBottom="8dp" />
 
             <!-- Tournament Location -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tournament_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="Date: January 1, 2022"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tournament_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:text="Starts: 09:00\nEnds:   18:00"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
+            </LinearLayout>
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tournament_location"
                 android:layout_width="wrap_content"
@@ -62,8 +76,18 @@
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_marginBottom="16dp" />
 
-            <!-- Additional Information (if any) -->
-            <!-- You can add more fields as needed -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/register_to_tournament"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/register"/>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

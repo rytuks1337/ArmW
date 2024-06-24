@@ -52,6 +52,7 @@ public class LoginScreen extends AppCompatActivity {
                         assert response.body() != null;
                         if(response.body().accessToken != null) {
                             TokenManager.saveJwtToken(LoginScreen.this, response.body().accessToken);
+                            finish();
                         }
                     }
 
