@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
+    android:id="@+id/mobile_navigation_auth"
     app:startDestination="@+id/navigation_home">
 
     <fragment
@@ -13,14 +13,14 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.rytis.armw.ui.account_settings.PreAuth"
+        android:name="com.rytis.armw.ui.account_settings.AccoutAfterAuth"
         android:label="Paskyra"
-        tools:layout="@layout/fragment_pre_auth" />
+        tools:layout="@layout/fragment_accout_after_auth" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.rytis.armw.ui.Current.EileBeforeAuth"
+        android:name="com.rytis.armw.ui.Current.EileMainMaster"
         android:label="@string/dabartinis"
-        tools:layout="@layout/fragment_eile_before_auth" />
+        tools:layout="@layout/fragment_eile_main_master" />
 
 </navigation>

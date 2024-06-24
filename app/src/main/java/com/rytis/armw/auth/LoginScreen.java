@@ -13,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.rytis.armw.MainActivity;
 import com.rytis.armw.R;
 import com.rytis.armw.Retrofit_Pre;
 import com.rytis.armw.dataModels.UserloginModel;
@@ -28,13 +29,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginScreen extends AppCompatActivity {
 
     ActivityLoginScreenBinding binding;
+    private OnLoginSuccessListener loginSuccessListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginScreenBinding.inflate(getLayoutInflater());
-
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
+
+
         binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,13 +48,15 @@ public class LoginScreen extends AppCompatActivity {
                 AuthenticationRoute loginUser = retro.create(AuthenticationRoute.class);
 
 
-
                 loginUser.postLoginUser(new UserloginModel.UserLoginData(email,pass)).enqueue(new Callback<UserloginModel.UserLoginDataResp>() {
                     @Override
                     public void onResponse(Call<UserloginModel.UserLoginDataResp> call, Response<UserloginModel.UserLoginDataResp> response) {
                         assert response.body() != null;
                         if(response.body().accessToken != null) {
-                            TokenManager.saveJwtToken(LoginScreen.this, response.body().accessToken);
+
+                            Intent resultIntent = new Intent();
+                            resultIntent.putExtra("accessToken", response.body().accessToken);
+                            setResult(RESULT_OK, resultIntent);
                             finish();
                         }
                     }

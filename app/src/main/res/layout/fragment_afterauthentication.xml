@@ -9,26 +9,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Profile Picture -->
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:contentDescription="@string/profile_picture"
-            android:src="@drawable/ic_profile"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="16dp"/>
-
-        <!-- Change Profile Picture Button -->
-        <Button
-            android:id="@+id/button_change_picture"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/change_picture"
-            android:layout_gravity="center"
-            android:layout_marginBottom="24dp"/>
-
         <!-- Name Field -->
         <TextView
             android:layout_width="match_parent"
@@ -59,20 +39,44 @@
             android:inputType="textEmailAddress"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Phone Number Field -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/phone"
+            android:text="@string/amzius"
             android:textStyle="bold"/>
 
         <EditText
-            android:id="@+id/editTextPhone"
+            android:id="@+id/editTextamzius"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/phone_hint"
-            android:inputType="phone"
-            android:layout_marginBottom="24dp"/>
+            android:hint="@string/input_your_age"
+            android:inputType="textEmailAddress"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/amzius"
+            android:textStyle="bold"/>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioVyr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vyras" />
+
+            <RadioButton
+                android:id="@+id/radioMot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/moteris" />
+        </RadioGroup>
 
         <!-- Save and Cancel Buttons -->
         <LinearLayout

@@ -1,5 +1,7 @@
 package com.rytis.armw;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -10,11 +12,18 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.rytis.armw.auth.LoginScreen;
+import com.rytis.armw.auth.TokenManager;
+import com.rytis.armw.auth.OnLoginSuccessListener;
 import com.rytis.armw.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Objects;
 
+public class MainActivity extends AppCompatActivity implements OnLoginSuccessListener {
+
+    private static final int REQUEST_CODE_LOGIN = 70;
     private ActivityMainBinding binding;
+    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +35,38 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
+        //navController.setGraph(R.navigation.mobile_navigation_auth);
+
+
     }
+
+
+    public void updateBottom(){
+        BottomNavigationView navView = binding.navView;
+        if (TokenManager.getJwtToken(MainActivity.this) != null) {
+            navController.setGraph(R.navigation.mobile_navigation_auth);
+
+        }
+
+    }
+
+    @Override
+    public void onLoginSuccess() {
+        Intent intent = new Intent(this, LoginScreen.class);
+        startActivityForResult(intent, REQUEST_CODE_LOGIN);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_LOGIN && resultCode == RESULT_OK) {
+            String accessToken = Objects.requireNonNull(data.getExtras()).getString("accessToken");
+            TokenManager.saveJwtToken(MainActivity.this, accessToken);
+            updateBottom();
+        }
+    }
+
 
 }
