@@ -1,9 +1,11 @@
 package com.rytis.armw.ui.tournaments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,7 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.rytis.armw.MainActivity;
 import com.rytis.armw.R;
+import com.rytis.armw.auth.TokenManager;
 import com.rytis.armw.dataModels.TournamentModel;
 import com.rytis.armw.databinding.FragmentHomeBinding;
 import com.rytis.armw.routes.TournamentRoute;
@@ -53,7 +57,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        checkperms();
         recyclerView = view.findViewById(R.id.list_recycle);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
@@ -63,6 +67,19 @@ public class HomeFragment extends Fragment {
         recyclerView.setClickable(true);
         dataInit(homeAdapter);
         
+    }
+
+    private void checkperms() {
+        if (TokenManager.getJwtToken(binding.getRoot().getContext()) != null) {
+
+            binding.floatingActionButton.setVisibility(View.VISIBLE);
+            binding.floatingActionButton.setOnClickListener(v -> {
+
+                Intent i = new Intent(binding.getRoot().getContext(), RegisterTournament.class);
+
+                startActivity(i);
+            });
+        }
     }
 
     private void dataInit(HomeAdapter homeAdapter) {

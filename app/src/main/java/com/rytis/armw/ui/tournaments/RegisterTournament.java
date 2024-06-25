@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.rytis.armw.R;
 import com.rytis.armw.models.Varzybos;
@@ -37,22 +37,22 @@ public class RegisterTournament extends AppCompatActivity {
         kitas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                varzybos = new Varzybos();
-                varzybos.setPavadinimas(pavadinimas.getText().toString());
-                varzybos.setData(data.getText().toString());
-                varzybos.setPradzia(pradzia.getText().toString());
-                varzybos.setPabaiga(pabaiga.getText().toString());
-                varzybos.setLokacija(lokacija.getText().toString());
-                varzybos.setStalu_sk(Integer.parseInt(stalu_sk.getText().toString());
-                varzybos.setAprasas(aprasas.getText().toString());
+                try {
+                    Intent intent = new Intent(RegisterTournament.this, RegisterPogrupis.class);
+                    intent.putExtra("pavadinimas", pavadinimas.getText().toString());
+                    intent.putExtra("data", data.getText().toString());
+                    intent.putExtra("pradzia", pradzia.getText().toString());
+                    intent.putExtra("pabaiga", pabaiga.getText().toString());
+                    intent.putExtra("lokacija", lokacija.getText().toString());
+                    intent.putExtra("stalu_sk", Integer.parseInt(stalu_sk.getText().toString()));
+                    intent.putExtra("aprasas", aprasas.getText().toString());
+                    startActivity(intent);
+                    finish();
+                }catch (Exception e){
+                    Toast.makeText(RegisterTournament.this, e.toString(),Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
-    }
-    private void openPogrupisFr(){
-        RegisterPogrupis registerPogrupis = RegisterPogrupis.newInstance(Varzybos);
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.regist, pogrupisFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
     }
 }

@@ -15,6 +15,10 @@ public class Pogrupis {
     private String lytis;
     private String ranka;
 
+    public Pogrupis() {
+
+    }
+
     public String getPavadinimas() {
         return pavadinimas;
     }

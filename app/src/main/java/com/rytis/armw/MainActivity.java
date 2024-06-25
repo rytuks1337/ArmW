@@ -1,8 +1,12 @@
 package com.rytis.armw;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -16,6 +20,7 @@ import com.rytis.armw.auth.LoginScreen;
 import com.rytis.armw.auth.TokenManager;
 import com.rytis.armw.auth.OnLoginSuccessListener;
 import com.rytis.armw.databinding.ActivityMainBinding;
+import com.rytis.armw.ui.tournaments.RegisterTournament;
 
 import java.util.Objects;
 
@@ -37,10 +42,7 @@ public class MainActivity extends AppCompatActivity implements OnLoginSuccessLis
         // menu should be considered as top level destinations.
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-        binding.floatingActionButton.setOnClickListener(v -> {
-
-        });
+        updateBottom();
 
 
     }
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements OnLoginSuccessLis
         BottomNavigationView navView = binding.navView;
         if (TokenManager.getJwtToken(MainActivity.this) != null) {
             navController.setGraph(R.navigation.mobile_navigation_auth);
+
 
         }
 
