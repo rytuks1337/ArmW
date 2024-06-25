@@ -27,23 +27,24 @@ public class tournament_details_view extends AppCompatActivity {
         Intent intent = this.getIntent();
 
         if(intent != null) {
-            //String id = intent.getStringExtra("id");
+
+            Integer id = intent.getIntExtra("id", -1);
             String data = intent.getStringExtra("data");
             String pradzia = intent.getStringExtra("pradzia");
             String pabaiga = intent.getStringExtra("pabaiga");
+            String lokacija = intent.getStringExtra("lokacija");
             String aprasas = intent.getStringExtra("aprasas");
             String pavadinimas = intent.getStringExtra("pavadinimas");
-            //String organizatoriusvartotojo_id = intent.getStringExtra("organizatoriusvartotojo_id");
-            assert pradzia != null;
-            assert pabaiga != null;
-            String time = "Prasideda: "+pradzia.substring(0,5)+"\n"+"Baigiasi: "+pabaiga.substring(0,5);
+            Integer organizatoriusvartotojo_id = intent.getIntExtra("organizatoriusvartotojo_id", -1);
+            String time = "Prasideda: " + pradzia.substring(0, 5) + "\n" + "Baigiasi: " + pabaiga.substring(0, 5);
+
             binding.tournamentName.setText(pavadinimas);
-            assert data != null;
-            binding.tournamentDate.setText(data.substring(0,10));
+            binding.tournamentDate.setText(data.substring(0, 10));
             binding.tournamentDescription.setText(aprasas);
             binding.tournamentTime.setText(time);
+            if(lokacija==null) lokacija="Nenurodytas";
+            binding.tournamentLocation.setText(String.valueOf("Miestas: "+lokacija));
             binding.registerToTournament.setOnClickListener(v -> {
-
                 finish();
             });
 

@@ -78,6 +78,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.myViewHolder>{
                     i.putExtra("data",tournaments.getData());
                     i.putExtra("pradzia",tournaments.getPradzia());
                     i.putExtra("pabaiga",tournaments.getPabaiga());
+                    i.putExtra("lokacija",tournaments.getLokacija());
                     i.putExtra("aprasas",tournaments.getAprasas());
                     i.putExtra("pavadinimas",tournaments.getPavadinimas());
                     i.putExtra("organizatoriusvartotojo_id",tournaments.getOrganizatoriusvartotojo_id());
