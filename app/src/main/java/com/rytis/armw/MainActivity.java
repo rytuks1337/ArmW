@@ -37,7 +37,10 @@ public class MainActivity extends AppCompatActivity implements OnLoginSuccessLis
         // menu should be considered as top level destinations.
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
-        //navController.setGraph(R.navigation.mobile_navigation_auth);
+
+        binding.floatingActionButton.setOnClickListener(v -> {
+
+        });
 
 
     }

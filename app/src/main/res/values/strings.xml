@@ -40,4 +40,12 @@
     <string name="pozicijos">Pozicijos</string>
     <string name="valdymas">Valdymas</string>
     <string name="hello_blank_fragment">Privalote pasirinkti varžybas</string>
+    <string name="pavadinimas">Pavadinimas</string>
+    <string name="data">Data</string>
+    <string name="pradzia">Pradzia</string>
+    <string name="pabaiga">Pabaiga</string>
+    <string name="lokacija">Lokacija</string>
+    <string name="stalu_sk">Stalu Sk</string>
+    <string name="aprasas">Aprasas</string>
+    <string name="next">Kitas</string>
 </resources>

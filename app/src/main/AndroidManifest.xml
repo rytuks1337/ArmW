@@ -15,6 +15,9 @@
         android:theme="@style/Theme.ArmWrestlingTournamentManagementSystem"
         tools:targetApi="31">
         <activity
+            android:name=".ui.tournaments.RegisterTournament"
+            android:exported="false" />
+        <activity
             android:name=".tournament.tournament_details_view"
             android:exported="false" />
         <activity
