@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circular_background xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#FFCCCCCC" /> <!-- Circle color -->
+    <stroke android:width="2dp" android:color="#FFAAAAAA" /> <!-- Optional border -->
+</circular_background>

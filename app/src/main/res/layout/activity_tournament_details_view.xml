@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".tournament.tournament_details_view">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,80 +18,90 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Tournament Image -->
-            <ImageView
-                android:id="@+id/tournament_image"
+            <!-- Tournament Card -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:scaleType="centerCrop"
-                android:background="?attr/selectableItemBackgroundBorderless" />
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
 
-            <!-- Tournament Name -->
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tournament_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tournament Name"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
-
-            <!-- Tournament Date -->
-
-            <!-- Tournament Location -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tournament_date"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="Date: January 1, 2022"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tournament_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:text="Starts: 09:00\nEnds:   18:00"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"/>
-            </LinearLayout>
+                    <!-- Tournament Image -->
+                    <ImageView
+                        android:id="@+id/tournament_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginBottom="16dp"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="@string/tournament_image" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tournament_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Location: Example City"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_marginBottom="8dp" />
+                    <!-- Tournament Name -->
+                    <TextView
+                        android:id="@+id/tournament_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tournament Name"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                        android:textStyle="bold" />
+
+                    <!-- Tournament Date and Time -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tournament_date"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Date: January 1, 2022" />
+
+                        <TextView
+                            android:id="@+id/tournament_time"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="Starts: 09:00\nEnds: 18:00" />
+
+                    </LinearLayout>
+
+                    <!-- Tournament Location -->
+                    <TextView
+                        android:id="@+id/tournament_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Location: Example City" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <!-- Tournament Description -->
-            <com.google.android.material.textview.MaterialTextView
+            <TextView
                 android:id="@+id/tournament_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tournament Description: This is an example description of the tournament."
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:text="Tournament Description: This is an example description of the tournament." />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Register Button -->
+            <Button
+                android:id="@+id/register_to_tournament"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/register_to_tournament"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/register"/>
-            </LinearLayout>
+                android:layout_gravity="center_horizontal"
+                android:text="@string/register" />
 
         </LinearLayout>
+
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

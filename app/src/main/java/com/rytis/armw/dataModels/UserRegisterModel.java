@@ -10,13 +10,15 @@ public class UserRegisterModel {
     public static class UserRegisterData{
 
 
-        public UserRegisterData(String vardas, String pavarde, String el_pastas, String slaptazodis, Integer amzius) {
+        public UserRegisterData(String vardas, String pavarde, String el_pastas, String slaptazodis, String amzius, String lytis) {
             this.vardas = vardas;
             this.pavarde = pavarde;
             this.el_pastas = el_pastas;
             this.slaptazodis = slaptazodis;
             this.amzius = amzius;
+            this.lytis = lytis;
         }
+
 
         public String getVardas() {
             return vardas;
@@ -50,106 +52,70 @@ public class UserRegisterModel {
             this.slaptazodis = slaptazodis;
         }
 
-        public Integer getAmzius() {
+        public String getAmzius() {
             return amzius;
         }
 
-        public void setAmzius(Integer amzius) {
+        public void setAmzius(String amzius) {
             this.amzius = amzius;
         }
 
-        String vardas, pavarde, el_pastas, slaptazodis;
-        Integer amzius;
-    }
-
-    public static class UserRegisterModelResp{
-
-
-        public UserRegisterModelResp(String id, String vardas, String pavarde, String el_pastas, String slaptazodis, Integer amzius) {
-            this.id = id;
-            this.vardas = vardas;
-            this.pavarde = pavarde;
-            this.el_pastas = el_pastas;
-            this.slaptazodis = slaptazodis;
-            this.amzius = amzius;
+        public String getGender() {
+            return lytis;
         }
 
-        String id;
+        public void setGender(String gender) {
+            this.lytis = gender;
+        }
+
+
         String vardas;
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public String getVardas() {
-            return vardas;
-        }
-
-        public void setVardas(String vardas) {
-            this.vardas = vardas;
-        }
-
-        public String getPavarde() {
-            return pavarde;
-        }
-
-        public void setPavarde(String pavarde) {
-            this.pavarde = pavarde;
-        }
-
-        public String getEl_pastas() {
-            return el_pastas;
-        }
-
-        public void setEl_pastas(String el_pastas) {
-            this.el_pastas = el_pastas;
-        }
-
-        public String getSlaptazodis() {
-            return slaptazodis;
-        }
-
-        public void setSlaptazodis(String slaptazodis) {
-            this.slaptazodis = slaptazodis;
-        }
-
-        public Integer getAmzius() {
-            return amzius;
-        }
-
-        public void setAmzius(Integer amzius) {
-            this.amzius = amzius;
-        }
-
         String pavarde;
         String el_pastas;
         String slaptazodis;
-        Integer amzius;
+        String amzius;
+        String lytis;
+
+
 
 
     }
-    public static class UserRegisterModelRespErr{
-        public UserRegisterModelRespErr(List<ErrorResponse> errors) {
+
+    public static class UserRegisterModelResp {
+
+
+        public static class SuccessResponse {
+            private String message;
+
+            public SuccessResponse(String message) {
+                this.message = message;
+            }
+
+            public String getMessage() {
+                return message;
+            }
+        }
+
+    }
+    public static class ValidationErrorMultipleResponse {
+        private List<ErrorDetails> errors;
+
+        public ValidationErrorMultipleResponse(List<ErrorDetails> errors) {
             this.errors = errors;
         }
 
-        public List<ErrorResponse> getErrors() {
+        public List<ErrorDetails> getErrors() {
             return errors;
         }
 
-        public void setErrors(List<ErrorResponse> errors) {
-            this.errors = errors;
-        }
+        public static class ErrorDetails {
+            private String type;
+            private String msg;
+            private String path;
+            private String location;
 
-        List<ErrorResponse> errors;
-        public static class ErrorResponse {
-            public ErrorResponse(String type, String value, String msg, String path, String location) {
+            public ErrorDetails(String type, String msg, String path, String location) {
                 this.type = type;
-                this.value = value;
                 this.msg = msg;
                 this.path = path;
                 this.location = location;
@@ -159,60 +125,29 @@ public class UserRegisterModel {
                 return type;
             }
 
-            public void setType(String type) {
-                this.type = type;
-            }
-
-            public String getValue() {
-                return value;
-            }
-
-            public void setValue(String value) {
-                this.value = value;
-            }
-
             public String getMsg() {
                 return msg;
-            }
-
-            public void setMsg(String msg) {
-                this.msg = msg;
             }
 
             public String getPath() {
                 return path;
             }
 
-            public void setPath(String path) {
-                this.path = path;
-            }
-
             public String getLocation() {
                 return location;
             }
+        }
+    }
 
-            public void setLocation(String location) {
-                this.location = location;
-            }
+    public static class ValidationErrorSingleResponse {
+        private String error;
 
-            private String type;
-            private String value;
-            private String msg;
-            private String path;
-            private String location;
-
-
-            @Override
-            public String toString() {
-                return "ErrorResponse{" +
-                        "type='" + type + '\'' +
-                        ", value='" + value + '\'' +
-                        ", msg='" + msg + '\'' +
-                        ", path='" + path + '\'' +
-                        ", location='" + location + '\'' +
-                        '}';
-            }
+        public ValidationErrorSingleResponse(String error) {
+            this.error = error;
         }
 
+        public String getError() {
+            return error;
+        }
     }
 }

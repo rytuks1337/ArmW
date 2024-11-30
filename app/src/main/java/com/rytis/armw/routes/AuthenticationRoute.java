@@ -11,7 +11,9 @@ import retrofit2.http.POST;
 public interface AuthenticationRoute {
         @POST("/api/auth/login")
         Call<UserloginModel.UserLoginDataResp> postLoginUser (@Body UserloginModel.UserLoginData loginUser);
-        @POST("/api/auth/register")
+
+
+        @POST("/api/user/register")
         Call<UserRegisterModel.UserRegisterModelResp> postRegisterUser (@Body UserRegisterModel.UserRegisterData registerUser);
 }
 

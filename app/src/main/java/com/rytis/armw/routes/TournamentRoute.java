@@ -14,7 +14,7 @@ import retrofit2.http.POST;
 
 public interface TournamentRoute {
     @GET("/api/tournament/")
-    Call<List<TournamentModel.TournamentRespGetData>> getTournaments();
+    Call<TournamentModel.TournamentRespGetData> getTournaments();
     @POST("/api/tournament/")
     Call<Void> createTournament(@Body Varzybos varzybos);
 }

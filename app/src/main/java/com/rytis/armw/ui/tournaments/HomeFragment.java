@@ -2,10 +2,12 @@ package com.rytis.armw.ui.tournaments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,11 +17,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rytis.armw.MainActivity;
 import com.rytis.armw.R;
+import com.rytis.armw.Retrofit_Pre;
 import com.rytis.armw.auth.TokenManager;
 import com.rytis.armw.dataModels.TournamentModel;
 import com.rytis.armw.databinding.FragmentHomeBinding;
 import com.rytis.armw.routes.TournamentRoute;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +37,8 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
-    private String date;
-    private final ArrayList<TournamentModel.TournamentRespGetData> tournamentArrayList = new ArrayList<TournamentModel.TournamentRespGetData>();
-    private String[] tournamentDates_m, tournamentDates_d, tournamentNames;
+
+    private final ArrayList<TournamentModel.TournamentRespGetData.TournamentData> tournamentArrayList = new ArrayList<>();
     private RecyclerView recyclerView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -83,26 +86,31 @@ public class HomeFragment extends Fragment {
     }
 
     private void dataInit(HomeAdapter homeAdapter) {
-        Retrofit retro = new Retrofit.Builder().baseUrl("http://10.107.0.155:3000").addConverterFactory(GsonConverterFactory.create()).build();
+        Retrofit_Pre retro_p = new Retrofit_Pre();
+        Retrofit retro = retro_p.getRetrofit();
 
         TournamentRoute getTournaments = retro.create(TournamentRoute.class);
-        getTournaments.getTournaments().enqueue(new Callback<List<TournamentModel.TournamentRespGetData>>() {
+        getTournaments.getTournaments().enqueue(new Callback<TournamentModel.TournamentRespGetData>() {
             @Override
-            public void onResponse(Call<List<TournamentModel.TournamentRespGetData>> call, Response<List<TournamentModel.TournamentRespGetData>> response) {
+            public void onResponse(Call<TournamentModel.TournamentRespGetData> call, Response<TournamentModel.TournamentRespGetData> response) {
                 if (response.isSuccessful()) {
-                    List<TournamentModel.TournamentRespGetData> tournaments = response.body();
+                    TournamentModel.TournamentRespGetData tournamentRespGetData = response.body();
+                    List<TournamentModel.TournamentRespGetData.TournamentData> tournaments = tournamentRespGetData.getResult();
                     tournamentArrayList.clear();
-                    assert tournaments != null;
                     tournamentArrayList.addAll(tournaments);
-                    System.out.println("MeFirst");
                     homeAdapter.notifyDataSetChanged();
                 } else {
                     System.out.println("Response code: " + response.code());
                 }
             }
             @Override
-            public void onFailure(Call<List<TournamentModel.TournamentRespGetData>> call, Throwable t) {
-                System.out.println(t);
+            public void onFailure(Call<TournamentModel.TournamentRespGetData> call, Throwable t) {
+                Log.e("TournamentApi", "Error fetching tournaments", t);
+                if (t instanceof IOException) {
+                    Toast.makeText(homeAdapter.context, "Network error. Please check your connection.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(homeAdapter.context, "Something went wrong. Please try again later.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

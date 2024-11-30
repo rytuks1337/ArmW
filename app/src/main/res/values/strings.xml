@@ -48,4 +48,8 @@
     <string name="stalu_sk">Stalu Sk</string>
     <string name="aprasas">Aprasas</string>
     <string name="next">Kitas</string>
+    <string name="lytis">Lytis</string>
+    <string name="male">Moteris</string>
+    <string name="female">Vyras</string>
+    <string name="tournament_image">image_text</string>
 </resources>

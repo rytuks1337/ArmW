@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Current.EileMainMaster">
+    tools:context=".ui.line_match.EileMainMaster">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayoutEile"
