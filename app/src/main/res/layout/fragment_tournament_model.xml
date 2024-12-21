@@ -19,7 +19,7 @@
             android:id="@+id/tournament_image"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/group_item_background"
             android:layout_marginEnd="16dp" />
 
         <LinearLayout
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="Additional Information"
+                android:text="Press for additional Information"
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="12sp" />
 
@@ -55,7 +55,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
-            android:background="@drawable/gradient_background">
+            android:background="@drawable/tournament_gradient_background_green">
 
             <TextView
                 android:id="@+id/tvMonth"

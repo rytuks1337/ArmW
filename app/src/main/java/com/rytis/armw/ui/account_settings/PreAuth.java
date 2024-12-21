@@ -49,6 +49,7 @@ public class PreAuth extends Fragment {
             startActivity(i);
         });
     }
+
     private OnLoginSuccessListener onLoginSuccessListener;
 
     @Override
@@ -57,7 +58,7 @@ public class PreAuth extends Fragment {
         if (context instanceof OnLoginSuccessListener) {
             onLoginSuccessListener = (OnLoginSuccessListener) context;
         } else {
-            throw new RuntimeException(context.toString() + " must implement OnSignInClickListener");
+            throw new RuntimeException(context.toString() + " must implement OnLoginSuccessListener");
         }
     }
     @Override

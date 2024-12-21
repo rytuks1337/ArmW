@@ -19,16 +19,18 @@ public class TournamentModel {
         public static class TournamentData {
             private final Integer id;
             private final String status;
+            private final String filepath;
             private final String pavadinimas;
             private final String data;
-            private final Integer pabaiga;
+            private final String pabaiga;
             private final String lokacija;
             private final Integer stalu_sk;
             private final String aprasas;
 
-            public TournamentData(Integer id, String status, String pavadinimas, String data, Integer pabaiga, String lokacija, Integer stalu_sk, String aprasas) {
+            public TournamentData(Integer id, String status, String filepath, String pavadinimas, String data, String pabaiga, String lokacija, Integer stalu_sk, String aprasas) {
                 this.id = id;
                 this.status = status;
+                this.filepath = filepath;
                 this.pavadinimas = pavadinimas;
                 this.data = data;
                 this.pabaiga = pabaiga;
@@ -53,7 +55,7 @@ public class TournamentModel {
                 return data;
             }
 
-            public Integer getPabaiga() {
+            public String getPabaiga() {
                 return pabaiga;
             }
 
@@ -69,6 +71,9 @@ public class TournamentModel {
                 return aprasas;
             }
 
+            public String getFilepath() {
+                return filepath;
+            }
         }
 
     }

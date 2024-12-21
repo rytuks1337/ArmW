@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,13 +14,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.rytis.armw.MainActivity;
 import com.rytis.armw.R;
 import com.rytis.armw.Retrofit_Pre;
 import com.rytis.armw.auth.TokenManager;
 import com.rytis.armw.dataModels.TournamentModel;
 import com.rytis.armw.databinding.FragmentHomeBinding;
 import com.rytis.armw.routes.TournamentRoute;
+import com.rytis.armw.ui.tournaments.register_tournament.RegisterTournament;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,7 +30,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeFragment extends Fragment {
 
@@ -86,8 +84,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void dataInit(HomeAdapter homeAdapter) {
-        Retrofit_Pre retro_p = new Retrofit_Pre();
-        Retrofit retro = retro_p.getRetrofit();
+        Retrofit_Pre retro_p = new Retrofit_Pre(binding.getRoot().getContext());
+        Retrofit retro = retro_p.getRetrofit(false);
 
         TournamentRoute getTournaments = retro.create(TournamentRoute.class);
         getTournaments.getTournaments().enqueue(new Callback<TournamentModel.TournamentRespGetData>() {

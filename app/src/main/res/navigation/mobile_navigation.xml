@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.rytis.armw.ui.line_match.EileBeforeAuth"
+        android:name="com.rytis.armw.ui.queue_controller.EileMainMaster"
         android:label="@string/dabartinis"
         tools:layout="@layout/fragment_eile_before_auth" />
 

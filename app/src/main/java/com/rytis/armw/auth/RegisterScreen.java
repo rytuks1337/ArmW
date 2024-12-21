@@ -41,8 +41,8 @@ public class RegisterScreen extends AppCompatActivity {
         binding.regRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Retrofit_Pre retro_p = new Retrofit_Pre();
-                Retrofit retro = retro_p.getRetrofit();
+                Retrofit_Pre retro_p = new Retrofit_Pre(binding.getRoot().getContext());
+                Retrofit retro = retro_p.getRetrofit(false);
                 DatePicker datePicker = binding.regBirthday;
                 int year = datePicker.getYear();
                 int month = datePicker.getMonth(); // Month is 0-indexed (0 = January)
@@ -73,7 +73,7 @@ public class RegisterScreen extends AppCompatActivity {
                     public void onResponse(Call<UserRegisterModel.UserRegisterModelResp> call, Response<UserRegisterModel.UserRegisterModelResp> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(RegisterScreen.this, "Registration successful", Toast.LENGTH_SHORT).show();
-
+                            finish();
                             // Handle successful response
                         } else {
                             // Handle error based on HTTP status code

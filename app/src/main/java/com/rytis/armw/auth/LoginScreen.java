@@ -56,8 +56,8 @@ public class LoginScreen extends AppCompatActivity {
         String email = binding.emailSign.getText().toString();
         String pass = binding.passwordSign.getText().toString();
 
-        Retrofit_Pre pre_retro = new Retrofit_Pre();
-        AuthenticationRoute loginUser = pre_retro.getRetrofit().create(AuthenticationRoute.class);
+        Retrofit_Pre pre_retro = new Retrofit_Pre(this);
+        AuthenticationRoute loginUser = pre_retro.getRetrofit(false).create(AuthenticationRoute.class);
 
         loading.setVisibility(View.VISIBLE);
 
@@ -88,5 +88,6 @@ public class LoginScreen extends AppCompatActivity {
                 Toast.makeText(LoginScreen.this, "Failure: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

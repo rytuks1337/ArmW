@@ -5,16 +5,27 @@ import java.util.List;
 public class Varzybos {
 
     private String pavadinimas;
+    private String status;
+    private String data;
+    private String pradzia;
+    private String pabaiga;
+    private String filepath;
+    private String lokacija;
+    private int stalu_sk;
+    private String aprasas;
+    private List<Grupe> pogrupis_sarasas;
 
-    public Varzybos(String pavadinimas, String data, String pradzia, String pabaiga, String lokacija, int stalu_sk, String aprasas, List<Pogrupis> pogrupis_sarasas) {
+    public Varzybos(String pavadinimas, String data, String pradzia, String pabaiga, String filepath, String lokacija, int stalu_sk, String status, String aprasas, List<Grupe> pogrupis_sarasas) {
         this.pavadinimas = pavadinimas;
         this.data = data;
         this.pradzia = pradzia;
         this.pabaiga = pabaiga;
+        this.filepath = filepath;
         this.lokacija = lokacija;
         this.stalu_sk = stalu_sk;
         this.aprasas = aprasas;
         this.pogrupis_sarasas = pogrupis_sarasas;
+        this.status = status;
     }
 
     public Varzybos() {
@@ -28,6 +39,12 @@ public class Varzybos {
     public void setPavadinimas(String pavadinimas) {
         this.pavadinimas = pavadinimas;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) { this.status = status; }
 
     public String getData() {
         return data;
@@ -77,19 +94,19 @@ public class Varzybos {
         this.aprasas = aprasas;
     }
 
-    public List<Pogrupis> getPogrupis_sarasas() {
+    public List<Grupe> getPogrupis_sarasas() {
         return pogrupis_sarasas;
     }
 
-    public void setPogrupis_sarasas(List<Pogrupis> pogrupis_sarasas) {
+    public void setPogrupis_sarasas(List<Grupe> pogrupis_sarasas) {
         this.pogrupis_sarasas = pogrupis_sarasas;
     }
 
-    private String data;
-    private String pradzia;
-    private String pabaiga;
-    private String lokacija;
-    private int stalu_sk;
-    private String aprasas;
-    private List<Pogrupis> pogrupis_sarasas;
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
+    }
 }
