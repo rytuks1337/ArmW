@@ -20,9 +20,9 @@ import java.util.List;
 
 public class QueueTableAdapter extends RecyclerView.Adapter<QueueTableAdapter.QueueTableViewHolder> {
 
-    private List<QueueModel.Queue_Table> tables;
+    private List<Queue_Table> tables;
 
-    public QueueTableAdapter(List<QueueModel.Queue_Table> tables) {
+    public QueueTableAdapter(List<Queue_Table> tables) {
 
         this.tables = tables;
     }
@@ -36,13 +36,13 @@ public class QueueTableAdapter extends RecyclerView.Adapter<QueueTableAdapter.Qu
 
     @Override
     public void onBindViewHolder(@NonNull QueueTableViewHolder holder, int position) {
-        QueueModel.Queue_Table table = tables.get(position);
+        Queue_Table table = tables.get(position);
 
-        holder.tableName.setText("Stalas"+ (1+table.getTableNumber()));
-        holder.queue_round.setText("Roundas: " + table.getCurrentMatch().getRound());
+        holder.tableName.setText("Stalas "+ (1+table.getTableNumber()));
+        holder.queue_round.setText("Raundas: " + table.getCurrentMatch().getRound());
 
         // Setup nested RecyclerView
-        BracketMatchAdapter itemAdapter = new BracketMatchAdapter(table.getMatches(),true);
+        QueueTableItemAdapter itemAdapter = new QueueTableItemAdapter(table.getCurrentMatch().getMatches(),true);
         holder.recyclerView.setAdapter(itemAdapter);
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext()));
     }

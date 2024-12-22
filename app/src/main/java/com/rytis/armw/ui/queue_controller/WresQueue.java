@@ -31,7 +31,7 @@ public class WresQueue extends Fragment {
     private static final String TOURNAMENT_ID = "tournament_id";
     private RecyclerView recyclerView;
     private QueueTableAdapter tableadapter;
-    private List<QueueModel.Queue_Table> tableList = new ArrayList<>();
+    private List<Queue_Table> tableList = new ArrayList<>();
     private int tournamentId;
     public static WresQueue newInstance(int tournamentId){
         WresQueue fragment = new WresQueue();
@@ -66,7 +66,7 @@ public class WresQueue extends Fragment {
         return view;
     }
 
-    public void addTable(QueueModel.Queue_Table table) {
+    public void addTable(Queue_Table table) {
         tableList.add(table);
         tableadapter.notifyDataSetChanged();
     }
@@ -74,14 +74,14 @@ public class WresQueue extends Fragment {
         Retrofit_Pre retrofit_pre = new Retrofit_Pre(getContext());
         Retrofit retrofit = retrofit_pre.getRetrofit(true);
         TournamentRoute tournamentRoute = retrofit.create(TournamentRoute.class);
-        Call<List<QueueModel.Queue_Table>> call = tournamentRoute.getTournamentTables(tournamentId);
+        Call<List<Queue_Table>> call = tournamentRoute.getTournamentTables(tournamentId);
         call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<List<QueueModel.Queue_Table>> call, Response<List<QueueModel.Queue_Table>> response) {
+            public void onResponse(Call<List<Queue_Table>> call, Response<List<Queue_Table>> response) {
                 if (response.isSuccessful()) {
-                    List<QueueModel.Queue_Table> tables = response.body();
+                    List<Queue_Table> tables = response.body();
                     if (tables != null) {
-                        for (QueueModel.Queue_Table table : tables) {
+                        for (Queue_Table table : tables) {
                             addTable(table);
                         }
                     }
@@ -89,7 +89,7 @@ public class WresQueue extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<QueueModel.Queue_Table>> call, Throwable throwable) {
+            public void onFailure(Call<List<Queue_Table>> call, Throwable throwable) {
                 Toast.makeText(getContext(), "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

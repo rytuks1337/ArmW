@@ -7,7 +7,7 @@ import com.rytis.armw.models.GrupeList;
 import com.rytis.armw.models.Tournament;
 import com.rytis.armw.models.Varzybos;
 import com.rytis.armw.ui.bracket.BracketGroupModel;
-import com.rytis.armw.ui.queue_controller.QueueModel;
+import com.rytis.armw.ui.queue_controller.Queue_Table;
 
 import java.util.List;
 
@@ -43,6 +43,6 @@ public interface TournamentRoute {
     Call<BracketGroupModel> getgroupBracket(@Path("tournamentId") int tournamentId, @Path("groupId") int groupId);
 
     @GET("/api/tournament/{tournamentId}/tables")
-    Call<List<QueueModel.Queue_Table>> getTournamentTables(@Path("tournamentId") int tournamentId);
+    Call<List<Queue_Table>> getTournamentTables(@Path("tournamentId") int tournamentId);
 
 }
