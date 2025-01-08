@@ -18,8 +18,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.rytis.armw.MainActivity;
-import com.rytis.armw.R;
-import com.rytis.armw.auth.OnLoginSuccessListener;
 import com.rytis.armw.auth.TokenManager;
 import com.rytis.armw.databinding.FragmentAccoutAfterAuthBinding;
 

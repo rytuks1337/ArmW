@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +14,9 @@ import android.widget.Toast;
 
 import com.rytis.armw.R;
 import com.rytis.armw.Retrofit_Pre;
-import com.rytis.armw.models.Grupe;
 import com.rytis.armw.routes.TournamentRoute;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,13 +25,27 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 
-public class WresQueue extends Fragment {
+public class WresQueue extends Fragment implements RefreshListener {
 
     private static final String TOURNAMENT_ID = "tournament_id";
     private RecyclerView recyclerView;
     private QueueTableAdapter tableadapter;
     private List<Queue_Table> tableList = new ArrayList<>();
+    private boolean isRefreshing = true;
     private int tournamentId;
+
+    private Handler handler = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if (isRefreshing) {
+                getTables();
+            }
+            handler.postDelayed(this, REFRESH_INTERVAL);
+        }
+    };
+    private static final long REFRESH_INTERVAL = 10000;
+
     public static WresQueue newInstance(int tournamentId){
         WresQueue fragment = new WresQueue();
         Bundle args = new Bundle();
@@ -41,13 +54,13 @@ public class WresQueue extends Fragment {
         return fragment;
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             tournamentId = getArguments().getInt(TOURNAMENT_ID);
         }
+        handler.postDelayed(runnable, REFRESH_INTERVAL);//Every 3 seconds update the the run(), which calls getTables()
     }
 
     @Override
@@ -59,10 +72,11 @@ public class WresQueue extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        tableadapter = new QueueTableAdapter(tableList);
+        tableadapter = new QueueTableAdapter(tableList, this, this);
         recyclerView.setAdapter(tableadapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         getTables();
+
         return view;
     }
 
@@ -79,6 +93,7 @@ public class WresQueue extends Fragment {
             @Override
             public void onResponse(Call<List<Queue_Table>> call, Response<List<Queue_Table>> response) {
                 if (response.isSuccessful()) {
+                    tableList.clear();
                     List<Queue_Table> tables = response.body();
                     if (tables != null) {
                         for (Queue_Table table : tables) {
@@ -94,6 +109,20 @@ public class WresQueue extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onRefreshToggle(boolean isRefreshing) {
+        this.isRefreshing = isRefreshing;
+    }
+
+    @Override
+    public void forceRefresh() {
+        getTables();
+    }
+    public void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(runnable);
     }
 
 

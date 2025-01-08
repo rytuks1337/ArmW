@@ -51,7 +51,7 @@ public class tournament_details_view extends AppCompatActivity {
                 binding.tournamentName.setText(pavadinimas);
                 Glide.with(this)
                         .load(preRetrofit.getBaseUrl() +
-                                "/api/" + filepath) // Assuming tournaments.getImageUrl() returns the image URL
+                                "api/" + filepath) // Assuming tournaments.getImageUrl() returns the image URL
                         .into(binding.tournamentImage); // Assuming you have an ImageView named 'tournamentImage' in your ViewHolder
             }
             binding.tournamentDate.setText(data.substring(0, 10));
@@ -63,10 +63,17 @@ public class tournament_details_view extends AppCompatActivity {
                 finish();
             });
             binding.viewTournament.setOnClickListener(v -> {
-               SharedPreferences sharedPreferences = getSharedPreferences("tournament", MODE_PRIVATE);
-               SharedPreferences.Editor editor = sharedPreferences.edit();
-               editor.putInt("tournament_id", id);
-               editor.apply();
+                SharedPreferences sharedPreferences = getSharedPreferences("tournament", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                Intent resultIntent = new Intent();
+
+                editor.putInt("tournament_id", id);
+
+                editor.putString("tournament_name", pavadinimas);
+                resultIntent.putExtra("tournament_name", pavadinimas);
+                setResult(RESULT_OK, resultIntent);
+                editor.apply();
+
                 finish();
             });
 

@@ -14,14 +14,23 @@ public class Queue_Table {
 
         private final GroupQueue dabartinisLenkimoGrupesID;
 
-        public Queue_Table(int id, int nr, GroupQueue dabartinisLenkimoGrupesID) {
+        private int turnyro_id;
+
+
+
+        public Queue_Table(int id, int nr, GroupQueue dabartinisLenkimoGrupesID, int turnyro_id) {
             this.id = id;
             this.nr = nr;
             this.dabartinisLenkimoGrupesID = dabartinisLenkimoGrupesID;
+            this.turnyro_id = turnyro_id;
         }
 
         public int getId() {
             return id;
+        }
+
+        public int getTournamentId() {
+            return turnyro_id;
         }
 
         public int getTableNumber() {
@@ -30,10 +39,6 @@ public class Queue_Table {
 
         public GroupQueue getCurrentMatch() {
             return dabartinisLenkimoGrupesID;
-        }
-
-        public void setTableNumber(int tableNumber) {
-            this.nr = tableNumber;
         }
 
         public static class GroupQueue{
@@ -57,6 +62,22 @@ public class Queue_Table {
 
             public String getName() {
                 return pavadinimas;
+            }
+            public String getGroupName() {
+                String tempstring = "";
+                if(lytis.equals("V")){
+                    tempstring= "Vyrai";
+                }
+                if(lytis.equals("M")){
+                    tempstring= "Moterys";
+                }
+                tempstring = tempstring + " " + pavadinimas;
+                if(amzius!=null){
+                    tempstring = tempstring + " " + amzius;
+                }
+                tempstring = tempstring + " " + svoris;
+
+                return tempstring;
             }
             public String getWeight() {
                 return svoris;

@@ -64,4 +64,9 @@
     <string name="kategorijos">Kategorijos</string>
     <string name="title_activity_bracket">BracketActivity</string>
     <string name="title_activity_main2">MainActivity2</string>
+    <string-array name="foul_types">
+        <item>Ranka</item>
+        <item>Alkūnė</item>
+        <item>Klaidingas startas</item>
+    </string-array>
 </resources>

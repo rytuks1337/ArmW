@@ -3,6 +3,7 @@ package com.rytis.armw.ui.queue_controller;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,11 +32,15 @@ public class QueueTableItemAdapter extends RecyclerView.Adapter<QueueTableItemAd
 
     @Override
     public void onBindViewHolder(@NonNull QueueTableViewHolder holder, int position) {
+
         Queue_Table.GroupQueue.MatchQueue match = matches.get(position);
         holder.player1TextView.setText(match.getPlayer1());
         holder.player2TextView.setText(match.getPlayer2());
         if (withoutWinners) {
             holder.winnerTextView.setVisibility(View.GONE);
+        }
+        if(match.getPlayer1() == null || match.getPlayer2() == null){
+            holder.itemLayout.setVisibility(View.GONE);
         }
     }
 
@@ -46,12 +51,16 @@ public class QueueTableItemAdapter extends RecyclerView.Adapter<QueueTableItemAd
 
     public static class QueueTableViewHolder extends RecyclerView.ViewHolder {
         TextView player1TextView, player2TextView, winnerTextView;
+        LinearLayout itemLayout;
+
 
         public QueueTableViewHolder(View itemView) {
             super(itemView);
             player1TextView = itemView.findViewById(R.id.text_player1);
             player2TextView = itemView.findViewById(R.id.text_player2);
             winnerTextView = itemView.findViewById(R.id.text_winner);
+            itemLayout = itemView.findViewById(R.id.bracket_item);
+
 
         }
     }

@@ -102,15 +102,27 @@ public class BracketActivity extends AppCompatActivity {
         TextView roundTitle = new TextView(this);
         roundTitle.setText("Raundas " + roundNumber);
         roundTitle.setGravity(Gravity.CENTER);
-        roundTitle.setTextSize(18);
+        roundTitle.setTextSize(21);
+        roundTitle.setTextColor(getResources().getColor(R.color.white));
         roundTitle.setPadding(0, 16, 0, 16);
+        roundTitle.setVisibility(View.GONE);
         roundLayout.addView(roundTitle);
 
         // Add each match to the round layout
         for (BracketMatchModel match : round) {
             View matchView = createMatchView(match, roundLayout);
+            if((match.getPlayer1Id() == null || match.getPlayer2Id() == null) && match.getRound() != 1) {
+                matchView.setVisibility(View.GONE);
+            }else{
+                if(roundTitle.getVisibility() == View.GONE){
+                    roundTitle.setVisibility(View.VISIBLE);
+                }
+            }
+
+
             roundLayout.addView(matchView);
         }
+
 
         return roundLayout;
     }
@@ -119,15 +131,10 @@ public class BracketActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         View matchView = inflater.inflate(R.layout.matchvs_item, parent, false);
 
-//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-//                LinearLayout.LayoutParams.WRAP_CONTENT,
-//                LinearLayout.LayoutParams.WRAP_CONTENT
-//        );
-//        matchView.setLayoutParams(params);
-
         TextView player1TextView = matchView.findViewById(R.id.text_player1);
         TextView player2TextView = matchView.findViewById(R.id.text_player2);
         TextView winnerTextView = matchView.findViewById(R.id.text_winner);
+
 
         player1TextView.setText(match.getPlayer1());
         player2TextView.setText(match.getPlayer2());

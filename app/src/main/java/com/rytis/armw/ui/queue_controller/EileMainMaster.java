@@ -48,6 +48,7 @@ public class EileMainMaster extends Fragment {
             });
             return binding1.getRoot();
         }
+        System.out.println(tournamentId);
         binding = FragmentEileMainMasterBinding.inflate(inflater, container, false);
         tabLayout = binding.tabLayoutEile;
         viewPager = binding.viewPagerEile;

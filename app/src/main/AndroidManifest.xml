@@ -20,11 +20,17 @@
             android:exported="false"
             android:label="@string/title_activity_bracket"
             android:theme="@style/Theme.ArmWrestlingTournamentManagementSystem" />
+        <activity android:name=".ui.queue_controller.Kategorijos2f"
+            android:exported="false"
+            android:theme="@style/Theme.ArmWrestlingTournamentManagementSystem" />
         <activity
             android:name=".ui.tournaments.register_tournament.RegisterTournament"
             android:exported="false" />
+
         <activity
             android:name=".ui.tournaments.register_tournament.RegisterPogrupis"
+            android:exported="false" />
+        <activity android:name=".ui.tournaments.control.judge.RefControl"
             android:exported="false" />
         <activity
             android:name=".tournament.tournament_details_view"

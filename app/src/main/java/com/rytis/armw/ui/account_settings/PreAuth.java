@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.rytis.armw.MainActivity;
 import com.rytis.armw.R;
 import com.rytis.armw.auth.LoginScreen;
-import com.rytis.armw.auth.OnLoginSuccessListener;
+import com.rytis.armw.auth.OnActionSuccessListener;
 import com.rytis.armw.auth.RegisterScreen;
 import com.rytis.armw.databinding.FragmentPreAuthBinding;
 
@@ -50,13 +50,13 @@ public class PreAuth extends Fragment {
         });
     }
 
-    private OnLoginSuccessListener onLoginSuccessListener;
+    private OnActionSuccessListener onLoginSuccessListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnLoginSuccessListener) {
-            onLoginSuccessListener = (OnLoginSuccessListener) context;
+        if (context instanceof OnActionSuccessListener) {
+            onLoginSuccessListener = (OnActionSuccessListener) context;
         } else {
             throw new RuntimeException(context.toString() + " must implement OnLoginSuccessListener");
         }

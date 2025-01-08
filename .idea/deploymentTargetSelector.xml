@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-12-20T21:19:36.142972400Z">
+        <DropdownSelection timestamp="2025-01-08T03:29:22.327855800Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="Default" identifier="serial=192.168.137.245:45863;connection=2347f8dd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\rutiz\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd" />
             </handle>
           </Target>
         </DropdownSelection>
@@ -15,12 +15,7 @@
           <targets>
             <Target type="DEFAULT_BOOT">
               <handle>
-                <DeviceId pluginId="PhysicalDevice" identifier="serial=RFCN5003DJH" />
-              </handle>
-            </Target>
-            <Target type="DEFAULT_BOOT">
-              <handle>
-                <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\rutiz\.android\avd\Copy_of_Pixel_2_API_27.avd" />
+                <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\rutiz\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd" />
               </handle>
             </Target>
           </targets>

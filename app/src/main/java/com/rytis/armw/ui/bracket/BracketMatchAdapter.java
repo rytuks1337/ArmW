@@ -36,6 +36,9 @@ public class BracketMatchAdapter extends RecyclerView.Adapter<BracketMatchAdapte
         if (withoutWinners) {
             holder.winnerTextView.setVisibility(View.GONE);
         }
+        if(match.getPlayer1() == null || match.getPlayer2() == null){
+            holder.itemView.setVisibility(View.GONE);
+        }
 
     }
 

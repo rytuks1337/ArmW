@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.card.MaterialCardView;
 import com.rytis.armw.R;
 import com.rytis.armw.Retrofit_Pre;
+import com.rytis.armw.auth.OnActionSuccessListener;
 import com.rytis.armw.dataModels.TournamentModel;
 import com.rytis.armw.tournament.tournament_details_view;
 
@@ -41,6 +42,7 @@ import com.jakewharton.threetenabp.AndroidThreeTen;
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.myViewHolder>{
     private java.util.Timer timer;
     private TimerTask timerTask;
+    private OnActionSuccessListener onChoiceSuccessListener;
     public String getMonthNameInLithuanian(String monthNumber) {
         try {
             // Parse the month number to a Date object
@@ -62,6 +64,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.myViewHolder>{
 
         this.context = context;
         this.tournament_list=tournament_list;
+        if (context instanceof OnActionSuccessListener) {
+            onChoiceSuccessListener = (OnActionSuccessListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + " must implement OnLoginSuccessListener");
+        }
         AndroidThreeTen.init(context);
     }
 
@@ -126,25 +133,25 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.myViewHolder>{
             holder.date_month.setText(getMonthNameInLithuanian(String.valueOf(Integer.valueOf(tournaments.getData().split("-")[1]))).substring(0,3).toUpperCase(Locale.getDefault()));
 
 
-            holder.container_layout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(context, tournament_details_view.class);
+            holder.container_layout.setOnClickListener(v -> {
+                Intent i = new Intent(context, tournament_details_view.class);
 
-                    i.putExtra("id",tournaments.getId());
-                    i.putExtra("status",tournaments.getStatus());
-                    i.putExtra("data",tournaments.getData());
-                    i.putExtra("filepath",tournaments.getFilepath());
-                    i.putExtra("pabaiga",tournaments.getPabaiga());
-                    i.putExtra("lokacija",tournaments.getLokacija());
-                    i.putExtra("aprasas",tournaments.getAprasas());
-                    i.putExtra("pavadinimas",tournaments.getPavadinimas());
-                    startActivity(context, i, null);
-                }
+                i.putExtra("id",tournaments.getId());
+                i.putExtra("status",tournaments.getStatus());
+                i.putExtra("data",tournaments.getData());
+                i.putExtra("filepath",tournaments.getFilepath());
+                i.putExtra("pabaiga",tournaments.getPabaiga());
+                i.putExtra("lokacija",tournaments.getLokacija());
+                i.putExtra("aprasas",tournaments.getAprasas());
+                i.putExtra("pavadinimas",tournaments.getPavadinimas());
+                //startActivity(context, i, null);
+                onChoiceSuccessListener.onChoiceSuccess(i);
+
             });
         }
 
     }
+
 
     @Override
     public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -199,4 +206,5 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.myViewHolder>{
             tournamentImage = itemView.findViewById(R.id.tournament_image);
         }
     }
+
 }

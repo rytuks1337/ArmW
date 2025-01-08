@@ -38,73 +38,66 @@ public class RegisterScreen extends AppCompatActivity {
 
 
         setContentView(binding.getRoot());
-        binding.regRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Retrofit_Pre retro_p = new Retrofit_Pre(binding.getRoot().getContext());
-                Retrofit retro = retro_p.getRetrofit(false);
-                DatePicker datePicker = binding.regBirthday;
-                int year = datePicker.getYear();
-                int month = datePicker.getMonth(); // Month is 0-indexed (0 = January)
-                int dayOfMonth = datePicker.getDayOfMonth();
+        binding.regRegister.setOnClickListener(v -> {
+            Retrofit_Pre retro_p = new Retrofit_Pre(binding.getRoot().getContext());
+            Retrofit retro = retro_p.getRetrofit(false);
+            DatePicker datePicker = binding.regBirthday;
+            int year = datePicker.getYear();
+            int month = datePicker.getMonth(); // Month is 0-indexed (0 = January)
+            int dayOfMonth = datePicker.getDayOfMonth();
 
-                // Format the date using SimpleDateFormat
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(year, month, dayOfMonth);
+            // Format the date using SimpleDateFormat
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(year, month, dayOfMonth);
 
-                String name = binding.regName.getText().toString();
-                String surname = binding.regSurname.getText().toString();
-                String age = dateFormat.format(calendar.getTime());
-                String email = binding.regMail.getText().toString();
-                String password = binding.regPass.getText().toString();
-                String gender ="";
-                if (binding.regMale.isChecked()) {
-                    gender = "M";
-                } else if (binding.regFemale.isChecked()) {
-                    gender = "F";
-                }
-                AuthenticationRoute registerUser = retro.create(AuthenticationRoute.class);
-
-
-
-                registerUser.postRegisterUser(new UserRegisterModel.UserRegisterData(name,surname, email, password, age, gender)).enqueue(new Callback<UserRegisterModel.UserRegisterModelResp>() {
-                    @Override
-                    public void onResponse(Call<UserRegisterModel.UserRegisterModelResp> call, Response<UserRegisterModel.UserRegisterModelResp> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(RegisterScreen.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                            finish();
-                            // Handle successful response
-                        } else {
-                            // Handle error based on HTTP status code
-                            switch (response.code()) {
-                                case 400:
-                                    Toast.makeText(RegisterScreen.this, "Invalid request", Toast.LENGTH_SHORT).show();
-                                    break;
-                                case 500:
-                                    Toast.makeText(RegisterScreen.this, "Internal Server Error", Toast.LENGTH_SHORT).show();
-                                    // Internal Server Error
-                                    // Display a generic error message
-                                    break;
-                                // ... handle other error codes ...
-                                default:
-                                    Toast.makeText(RegisterScreen.this, "Internal error", Toast.LENGTH_SHORT).show();
-                                    // Handle unknown error
-                                    break;
-                            }
-                        }
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<UserRegisterModel.UserRegisterModelResp> call, Throwable t) {
-                        Toast.makeText(RegisterScreen.this, "Registration failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                        t.printStackTrace();
-                    }
-                });
+            String name = binding.regName.getText().toString();
+            String surname = binding.regSurname.getText().toString();
+            String age = dateFormat.format(calendar.getTime());
+            String email = binding.regMail.getText().toString();
+            String password = binding.regPass.getText().toString();
+            String gender ="";
+            if (binding.regMale.isChecked()) {
+                gender = "V";
+            } else if (binding.regFemale.isChecked()) {
+                gender = "M";
             }
+            AuthenticationRoute registerUser = retro.create(AuthenticationRoute.class);
 
 
+            registerUser.postRegisterUser(new UserRegisterModel.UserRegisterData(name,surname, email, password, age, gender)).enqueue(new Callback<UserRegisterModel.UserRegisterModelResp>() {
+                @Override
+                public void onResponse(Call<UserRegisterModel.UserRegisterModelResp> call, Response<UserRegisterModel.UserRegisterModelResp> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(RegisterScreen.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                        finish();
+                        // Handle successful response
+                    } else {
+                        // Handle error based on HTTP status code
+                        switch (response.code()) {
+                            case 400:
+                                Toast.makeText(RegisterScreen.this, "Invalid request", Toast.LENGTH_SHORT).show();
+                                break;
+                            case 500:
+                                Toast.makeText(RegisterScreen.this, "Internal Server Error", Toast.LENGTH_SHORT).show();
+                                // Internal Server Error
+                                break;
+                            // ... handle other error codes ...
+                            default:
+                                Toast.makeText(RegisterScreen.this, "Internal error", Toast.LENGTH_SHORT).show();
+                                // Handle unknown error
+                                break;
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<UserRegisterModel.UserRegisterModelResp> call, Throwable t) {
+                    Toast.makeText(RegisterScreen.this, "Registration failed: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    t.printStackTrace();
+                }
+            });
         });
 
     }

@@ -16,7 +16,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class TokenManager {
+public class  TokenManager {
     private static final String SEC_PREF = "secure_preferences";
     private static final String TOKEN = "accessToken";
     private static final String EXP_KEY = "tokenExpiration";
@@ -34,12 +34,11 @@ public class TokenManager {
         editor.apply();
     }
 
-    // Get token
+
     public static String getJwtToken(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(SEC_PREF, Context.MODE_PRIVATE);
         long expirationTime = sharedPreferences.getLong(EXP_KEY, 0);
 
-        // Check if the token is expired
         if (System.currentTimeMillis() > expirationTime) {
             clearJwtToken(context);
             return null;
@@ -68,10 +67,10 @@ public class TokenManager {
     public static long getExpirationTime(String token) {
         DecodedJWT jwt = JWT.decode(token);
 
-        // Get the expiration time from the payload (exp claim)
+
         return jwt.getExpiresAt().getTime();
     }
-    //Using interface to interact with the callback,
+
     public interface TokenValidationCallback {
         void onTokenValidationResult(boolean isValid);
     }
@@ -83,9 +82,8 @@ public class TokenManager {
 
         String authToken = getJwtToken(context);
 
-        // Make the GET request
         Call<ResponseBody> call = authInstance.getAuthTest(authToken);
-        call.enqueue(new Callback<ResponseBody>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful() && response.body() != null) {

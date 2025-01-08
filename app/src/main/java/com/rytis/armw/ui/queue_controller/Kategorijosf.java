@@ -19,6 +19,7 @@ import com.rytis.armw.routes.TournamentRoute;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
 
 import okhttp3.Request;
 import retrofit2.Call;
@@ -31,8 +32,8 @@ public class Kategorijosf extends Fragment {
 
     private static final String TOURNAMENT_ID = "tournament_id";
     private RecyclerView recyclerView;
-    private GroupListAdaptor groupAdapter;
-    private List<Grupe> pogrupisList = new ArrayList<>();
+    private GroupBasicListAdaptor groupAdapter;
+    private List<GrupeList.GrupeBasic> pogrupisList = new ArrayList<>();
     private int tournamentId;
 
     public static Kategorijosf newInstance(int tournamentId) {
@@ -57,7 +58,7 @@ public class Kategorijosf extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_groupf, container, false);
         recyclerView = view.findViewById(R.id.recycler_groups);
-        groupAdapter = new GroupListAdaptor(getContext(), pogrupisList);
+        groupAdapter = new GroupBasicListAdaptor(getContext(), pogrupisList);
         recyclerView.setAdapter(groupAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         getGroups();
@@ -65,7 +66,7 @@ public class Kategorijosf extends Fragment {
         return view;
     }
 
-    public void addGroup(Grupe grupe) {
+    public void addBasicGroup(GrupeList.GrupeBasic grupe) {
         pogrupisList.add(grupe);
         groupAdapter.notifyDataSetChanged();
     }
@@ -76,17 +77,15 @@ public class Kategorijosf extends Fragment {
 
         TournamentRoute tournamentRoute = retrofit.create(TournamentRoute.class);
         Call<GrupeList> call = tournamentRoute.getGroups(tournamentId);
-        Request headers = call.request();
-        System.out.println(headers.headers());
-        call.enqueue(new Callback<GrupeList>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<GrupeList> call, Response<GrupeList> response) {
                 if (response.isSuccessful()) {
                     GrupeList grupes = response.body();
                     if (grupes != null) {
-                        List<Grupe> grupesList = grupes.getGrupes();
-                        for (Grupe grupe : grupesList) {
-                            addGroup(grupe);
+                        List<GrupeList.GrupeBasic> grupesBasicList = grupes.getGrupesBasic();
+                        for (GrupeList.GrupeBasic grupebasic : grupesBasicList) {
+                            addBasicGroup(grupebasic);
                         }
                     }
                 } else {
@@ -96,7 +95,7 @@ public class Kategorijosf extends Fragment {
 
             @Override
             public void onFailure(Call<GrupeList> call, Throwable throwable) {
-                Toast.makeText(getContext(), "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(null, "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

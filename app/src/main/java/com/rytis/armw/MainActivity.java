@@ -1,7 +1,9 @@
 package com.rytis.armw;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -9,6 +11,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -16,12 +19,13 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.rytis.armw.auth.LoginScreen;
 import com.rytis.armw.auth.TokenManager;
-import com.rytis.armw.auth.OnLoginSuccessListener;
+import com.rytis.armw.auth.OnActionSuccessListener;
 import com.rytis.armw.databinding.ActivityMainBinding;
+import com.rytis.armw.tournament.tournament_details_view;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements OnLoginSuccessListener {
+public class MainActivity extends AppCompatActivity implements OnActionSuccessListener {
 
     private static final int REQUEST_CODE_LOGIN = 70;
     private ActivityMainBinding binding;
@@ -43,10 +47,15 @@ public class MainActivity extends AppCompatActivity implements OnLoginSuccessLis
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        //ActionBar used for animated top text
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayShowCustomEnabled(true);
+            actionBar.setCustomView(R.layout.action_bar_top_item);
+        }
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu considered as top level destinations.
+        // Passing each menu ID as a set of Ids because the array changes.
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupWithNavController(binding.navView, navController);
         updateBottom();
@@ -71,6 +80,14 @@ public class MainActivity extends AppCompatActivity implements OnLoginSuccessLis
             System.out.println("Token not found");
             navController.setGraph(R.navigation.mobile_navigation);
         }
+        SharedPreferences sharedPreferences = getSharedPreferences("tournament", MODE_PRIVATE);
+        String tournamentName = sharedPreferences.getString("tournament_name", null);
+        if(tournamentName != null){
+            TextView scrollingTitle = findViewById(R.id.animated_action_bar);
+            scrollingTitle.setText(tournamentName);
+            scrollingTitle.setSelected(true);
+        }
+
 
     }
 
@@ -82,6 +99,11 @@ public class MainActivity extends AppCompatActivity implements OnLoginSuccessLis
     public void onLoginSuccess() {
         Intent intent = new Intent(this, LoginScreen.class);
         startForResult.launch(intent);
+    }
+
+    @Override
+    public void onChoiceSuccess(Intent i) {
+        startForResult.launch(i);
     }
 
 

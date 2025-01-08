@@ -5,6 +5,11 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/action_bar_top_item.xml">
+        <config>
+          <theme>@style/Theme.ArmWrestlingTournamentManagementSystem</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_brackets.xml">
         <config>
           <theme>@style/Theme.ArmWrestlingTournamentManagementSystem</theme>
@@ -26,6 +31,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register_tournament.xml">
+        <config>
+          <theme>@style/Theme.ArmWrestlingTournamentManagementSystem</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_table_control.xml">
         <config>
           <theme>@style/Theme.ArmWrestlingTournamentManagementSystem</theme>
         </config>
@@ -142,15 +152,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="170f349e-8606-4401-a5b7-01e0dd3616cb" name="Changes" comment="fixes">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/QueueTableItemAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/GroupBasicListAdaptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/Kategorijos2f.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/RefreshListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/tournaments/control/judge/RefControl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_foul.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/action_bar_top_item.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_table_control.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/Retrofit_Pre.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/Retrofit_Pre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/auth/OnLoginSuccessListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/auth/OnActionSuccessListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/auth/RegisterScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/auth/RegisterScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/auth/TokenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/auth/TokenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/models/Grupe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/models/Grupe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/models/GrupeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/models/GrupeList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/routes/TournamentRoute.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/routes/TournamentRoute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/QueueModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/Queue_Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/tournament/tournament_details_view.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/tournament/tournament_details_view.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/account_settings/AccoutAfterAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/account_settings/AccoutAfterAuth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/account_settings/PreAuth.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/account_settings/PreAuth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/bracket/BracketActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/bracket/BracketActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/bracket/BracketMatchAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/bracket/BracketMatchAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/bracket/BracketView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/EileMainMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/EileMainMaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/Kategorijosf.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/Kategorijosf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/QueueTableAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/QueueTableAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/QueueTableItemAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/QueueTableItemAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/Queue_Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/Queue_Table.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/WresQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/queue_controller/WresQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/tournaments/HomeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/rytis/armw/ui/tournaments/HomeAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/group_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/group_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/matchvs_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/matchvs_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/queue_table_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/queue_table_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/network_security_config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
@@ -167,7 +204,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Admin\.android\avd\Pixel_4_API_33.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\rutiz\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -215,13 +252,13 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="navigationResourceFile" />
-        <option value="Interface" />
         <option value="XML Properties File" />
         <option value="valueResourceFile" />
         <option value="layoutResourceFile_vertical" />
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -237,7 +274,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/rytuks1337/ArmW.git&quot;,
-    &quot;accountId&quot;: &quot;9021cfed-b4e1-462f-b6bf-ad5e2c738a5b&quot;
+    &quot;accountId&quot;: &quot;81808afb-db3d-4b85-aeb0-1c13041cfda8&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -252,28 +289,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "ResourceManagerPrefKey.ResourceType": "LAYOUT",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/rutiz/AndroidStudioProjects/Armwrestlingtournamentmanagementsystem/app/src/main/res/layout",
-    "last_opened_file_path": "C:/Users/rutiz/AndroidStudioProjects/Armwrestlingtournamentmanagementsystem",
-    "project.structure.last.edited": "Dependencies",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;ResourceManagerPrefKey.ResourceType&quot;: &quot;LAYOUT&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/rutiz/AndroidStudioProjects/Armwrestlingtournamentmanagementsystem/app/src/main/res/layout&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/rutiz/AndroidStudioProjects/Armwrestlingtournamentmanagementsystem&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Dependencies&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.rytis.armw" />
@@ -302,6 +339,7 @@
       <recent name="com.rytis.armw" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.rytis.armw.ui.queue_controller" />
       <recent name="com.rytis.armw.ui.account_settings" />
       <recent name="com.rytis.armw.ui.home" />
     </key>
@@ -451,6 +489,17 @@
     </task>
     <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />

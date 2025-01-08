@@ -1,6 +1,8 @@
 package com.rytis.armw.models;
 
-public class Grupe {
+import java.io.Serializable;
+
+public class Grupe implements Serializable {
 
     private String pavadinimas;
     private int id;
