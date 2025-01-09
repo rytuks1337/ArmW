@@ -102,6 +102,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.myViewHolder>{
             LocalDateTime parsedDate = LocalDateTime.parse(tournaments.getData(), formatter);
 
             // Get the current date and time
+            if(status.equals("INIT")){
+                holder.additional_info.setText(R.string.not_started);
+                holder.date_casing.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.tournament_gradient_background_yellow));
+            }
             LocalDateTime today = LocalDateTime.now();
             if(today.isBefore(parsedDate) && status.equals("SETUP")){
                 Duration duration = Duration.between(today, parsedDate);
@@ -109,13 +113,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.myViewHolder>{
                 long hours = duration.toHours() % 24;
                 long minutes = duration.toMinutes() % 60;
                 holder.additional_info.setText(String.format(Locale.getDefault(),"Time left: %02d Days, %02d:%02d", days, hours, minutes));
+                holder.date_casing.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.tournament_gradient_background_green));
             }
-
             if(status.equals("REGISTER")){
-                holder.additional_info.setText(R.string.currently_registering);
                 holder.date_casing.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.tournament_gradient_background_red));
             }
-            if(status.equals("IN_PROGRESS")){
+            if(status.equals("IN_PROCCESS")){
                 holder.additional_info.setText(R.string.currently_in_progress);
                 holder.date_casing.setBackground(ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.tournament_gradient_background_blue));
             }

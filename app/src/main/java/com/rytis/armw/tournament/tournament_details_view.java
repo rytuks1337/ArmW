@@ -5,6 +5,7 @@ import static com.rytis.armw.R.*;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class tournament_details_view extends AppCompatActivity {
 
@@ -59,16 +61,21 @@ public class tournament_details_view extends AppCompatActivity {
             binding.tournamentTime.setText(time);
             if(lokacija==null) lokacija="Nenurodytas";
             binding.tournamentLocation.setText("Adresas: " + lokacija);
-            binding.registerToTournament.setOnClickListener(v -> {
-                finish();
-            });
+            if(Objects.equals(status, "REGISTER")) {
+                binding.registerToTournament.setVisibility(View.VISIBLE);
+                binding.registerToTournament.setOnClickListener(v -> {
+                    finish();
+                });
+            }else{
+                binding.registerToTournament.setVisibility(View.GONE);
+            }
+
             binding.viewTournament.setOnClickListener(v -> {
                 SharedPreferences sharedPreferences = getSharedPreferences("tournament", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 Intent resultIntent = new Intent();
 
                 editor.putInt("tournament_id", id);
-
                 editor.putString("tournament_name", pavadinimas);
                 resultIntent.putExtra("tournament_name", pavadinimas);
                 setResult(RESULT_OK, resultIntent);

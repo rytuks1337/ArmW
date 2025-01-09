@@ -3,6 +3,8 @@ package com.rytis.armw.routes;
 import com.rytis.armw.dataModels.TournamentModel;
 import com.rytis.armw.models.GrupeData;
 import com.rytis.armw.models.GrupeList;
+import com.rytis.armw.models.RoleGet;
+import com.rytis.armw.models.VarzybosGet;
 import com.rytis.armw.ui.bracket.BracketGroupModel;
 import com.rytis.armw.ui.queue_controller.Queue_Table;
 
@@ -18,10 +20,17 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface TournamentRoute {
-    @GET("/api/tournament/")
-    Call<TournamentModel.TournamentRespGetData> getTournaments();
+    @GET("/api/tournament/tournaments/{page}")
+    Call<TournamentModel.TournamentRespGetData> getTournaments(
+            @Path("page") int page,
+            @Query("isMine") boolean isMine,
+            @Query("hasPrivilages") boolean hasPrivilages,
+            @Query("participant") boolean participant,
+            @Query("search") String search
+    );
 
     @Multipart
     @POST("/api/tournament/create")
@@ -35,6 +44,12 @@ public interface TournamentRoute {
 
     @GET("/api/tournament/{tournamentId}/groups")
     Call<GrupeList> getGroups(@Path("tournamentId") int tournamentId);
+
+    @GET("/api/tournament/{tournamentId}")
+    Call<VarzybosGet> getTournament(@Path("tournamentId") int tournamentId);
+
+    @GET("/api/tournament/{tournamentId}/role")
+    Call<RoleGet> getRole(@Path("tournamentId") int tournamentId);
 
     @GET("/api/tournament/{tournamentId}/{groupId}/brackets")
     Call<BracketGroupModel> getgroupBracket(@Path("tournamentId") int tournamentId, @Path("groupId") int groupId);

@@ -171,30 +171,17 @@ public class RegisterTournament extends AppCompatActivity {
 
 
         Call<String> call = championshipRoute.createTournament(partData, filePart);
-        Request request = call.request();
-        RequestBody requestBody = request.body();
-        if (requestBody != null) {
-            try {
-                Buffer buffer = new Buffer();
-                requestBody.writeTo(buffer);
-                String requestBodyString = buffer.readUtf8();
-                System.out.println("Request Body"+ requestBodyString);
-            } catch (IOException e) {
-                System.out.println("Request Body "+ "Error reading request body"+e.toString());
-            }
-        }
-        for (int i = 0; i < request.headers().size(); i++) {
-            System.out.println("Request headers"+request.headers().name(i)+":"+request.headers().value(i));
-        }
-        call.enqueue(new Callback<String>() {
+
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println("Response"+response.code());
+                System.out.println("Response" + response.code());
                 if (response.isSuccessful()) {
+                    Toast.makeText(RegisterTournament.this, "Turnyras sukurtas", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    System.out.println("Response"+response.message());
-                    Toast.makeText(RegisterTournament.this, "Klaida kuriant turnyrą"+response.message(), Toast.LENGTH_SHORT).show();
+                    System.out.println("Response" + response.message());
+                    Toast.makeText(RegisterTournament.this, "Klaida kuriant turnyrą " + response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
 

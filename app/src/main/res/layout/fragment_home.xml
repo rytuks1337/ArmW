@@ -6,19 +6,64 @@
     android:layout_height="match_parent"
     tools:context=".ui.tournaments.HomeFragment">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
+
+    <LinearLayout
+        android:id="@+id/layoutSearchOptions"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/list_recycle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/list_recycle"
-        android:elevation="4dp"
-        />
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault="false"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:elevation="4dp" />
+
+        <LinearLayout
+            android:id="@+id/filterSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:visibility="gone">
+
+            <CheckBox
+                android:id="@+id/checkPersonalTournament"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Mano sukurtos varžybos"
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/checkHigherPermissions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Valdytojas"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list_recycle"
@@ -30,25 +75,25 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:layout_constraintTop_toBottomOf="@+id/layoutSearchOptions"
         tools:listitem="@layout/fragment_tournament_model" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:clickable="true"
         android:contentDescription="TODO"
         android:focusable="true"
         android:visibility="gone"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.907"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852"
+        app:layout_constraintVertical_bias="0.916"
         app:srcCompat="@android:drawable/ic_input_add" />
 
 

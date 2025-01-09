@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
-                android:text="Press for additional Information"
+                android:text="Paspauskite, norėdami sužinoti daugiau informacijos apie varžybas."
                 android:textColor="?android:attr/textColorSecondary"
                 android:textSize="12sp" />
 
@@ -52,8 +52,9 @@
         <LinearLayout
             android:id="@+id/tvLayout"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingVertical="7dp"
             android:gravity="center"
             android:background="@drawable/tournament_gradient_background_green">
 
