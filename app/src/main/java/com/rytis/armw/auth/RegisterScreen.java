@@ -1,5 +1,6 @@
 package com.rytis.armw.auth;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -13,7 +14,9 @@ import com.rytis.armw.R;
 import com.rytis.armw.Retrofit_Pre;
 import com.rytis.armw.dataModels.UserRegisterModel;
 import com.rytis.armw.databinding.ActivityRegisterScreenBinding;
+import com.rytis.armw.privacyPolicy;
 import com.rytis.armw.routes.AuthenticationRoute;
+import com.rytis.armw.ui.activityPrivacy;
 
 import java.io.Console;
 import java.io.IOException;
@@ -38,6 +41,11 @@ public class RegisterScreen extends AppCompatActivity {
 
 
         setContentView(binding.getRoot());
+        binding.privacyB.setOnClickListener(v ->{
+            Intent intent = new Intent(RegisterScreen.this, privacyPolicy.class);
+            startActivity(intent, null);
+        });
+
         binding.regRegister.setOnClickListener(v -> {
             Retrofit_Pre retro_p = new Retrofit_Pre(binding.getRoot().getContext());
             Retrofit retro = retro_p.getRetrofit(false);

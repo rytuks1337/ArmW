@@ -71,4 +71,28 @@
         <item>Alkūnė</item>
         <item>Klaidingas startas</item>
     </string-array>
+    <string name="privacy_policy">Privatumo politika
+
+Ši privatumo politika (toliau - „politika“) reglamentuoja asmens duomenų rinkimą, naudojimą, saugojimą ir apsaugą, kai jūs (toliau - „vartotojas“) naudojatės http://armw.com interneto svetaine (toliau - „svetainė“) ir jos teikiamomis paslaugomis.
+1. Asmens duomenų rinkimas ir tvarkymas
+
+1.1. Renkame asmeninius duomenis, kuriuos jūs savo pasirinkimu pateikiate aplikacijoje, kaip prisijungimus.
+2. Asmens duomenų saugojimas ir apsauga
+
+2.1. Mes įsipareigojame užtikrinti asmens duomenų konfidencialumą ir jų saugumą, taikydami tinkamas technines ir organizacines priemones, kad būtų apsaugoti nuo neteisėto ar netinkamo naudojimo, praradimo, sunaikinimo ar pažeidimo.
+2.2. Mes saugosime jūsų asmens duomenis tiek, kiek tai būtina siekiant vykdyti mūsų teisinius įsipareigojimus arba vykdyti mūsų verslo interesus.
+2.3. Galite apsilankyti mūsų svetainėje, nesuteikdami jokios informacijos, kuria būtų galima identifikuoti jūsų asmens tapatybę. Tačiau, jeigu norėsite pasinaudoti mūsų svetainės funkcijomis, norėsite gauti mūsų naujienlaiškį arba užpildysite mūsų kontaktinę formą, tuomet taip galite suteikti mums savo asmeninių duomenų: el. pašto adresą, vardą, pavardę. Turite pasirinkimą nesuteikti mums savo asmeninių duomenų, tačiau tokiu atveju negalėsite naudotis dauguma svetainės teikiamų funkcijų. Svetainės lankytojai, nežinantys, kokią informaciją privalome rinkti, gali susisiekti su mumis el. paštu: rytis.armw@gmail.com.
+
+3. Duomenų gavimas iš trečiųjų šalių
+
+3.1. Jūsų asmens duomenis perduodame tik patikimoms trečiosioms šalims ir tik siekdami tinkamai įgyvendinti asmens duomenų tvarkymo tikslus. Taip pat, galime perduoti jūsų asmens duomenis, kai to reikalauja galiojantys teisiniai įstatymai arba kai tai būtina mūsų paslaugų teikimui.
+
+4.1. Mūsų svetainė gali naudoti slapukus ir kitas sekimo technologijas, kad pagerintų jūsų naudojimosi patirtį ir analizuotų srautą.
+5.2. Mes nesusiejame lankytojo IP adreso ir elektroninio pašto adreso ar kitos asmeninės informacijos su duomenimis, kurie leidžia identifikuoti lankytoją. Tai reiškia, kad kiekvieno lankytojo apsilankymo sesija bus užregistruota, tačiau svetainės lankytojas išliks anonimiškas.
+6. Jūsų teisės
+
+6.1. Jūs turite teisę susipažinti su asmens duomenimis, kurie yra apie jus renkami ir tvarkomi, taip pat prašyti šių duomenų pataisymo, ištrinimo arba perkėlimo į kitą organizaciją. Taip pat jūs turite teisę prieštarauti duomenų tvarkymui.
+7. Kontaktai
+
+7.1. Jeigu turite klausimų ar pageidaujate gauti daugiau informacijos apie mūsų privatumo politiką, prašome susisiekti su mumis el. paštu: rytis.armw@gmail.com. </string>
 </resources>

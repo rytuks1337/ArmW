@@ -71,19 +71,9 @@ public class EileMainMaster extends Fragment {
 
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
 
-            switch (currentState) {
-                case "INIT":
-                    tab.setText(position == 1 ? R.string.control_tournament : R.string.kategorijos);
-                    break;
-                case "IN_PROGRESS":
-                    tab.setText(position == 1 ? R.string.eil : R.string.kategorijos);
-                    break;
-                case "FINISHED":
-                    tab.setText(R.string.kategorijos);
-                    break;
-                default:
-                    tab.setText("Unknown");
-            }
+            tab.setText(position == 1 ? R.string.eil : R.string.kategorijos);
+
+
         }).attach();
 
 
@@ -100,7 +90,7 @@ public class EileMainMaster extends Fragment {
 
 
                 if (position == 1) {
-                    return ControlTournament.newInstance(tournamentId);
+                    return WresQueue.newInstance(tournamentId);
                 } else {
                     return Kategorijosf.newInstance(tournamentId);
                 }
@@ -109,23 +99,9 @@ public class EileMainMaster extends Fragment {
 
             @Override
             public int getItemCount() {
-                // Dynamically determine the number of tabs based on the state
-                if (currentState == null) {
-                    throw new IllegalStateException("Current state is not set");
-                }
 
-                switch (currentState) {
-                    case "INIT":
-                        return 2;
-                    case "SETUP":
-                        return 2;
-                    case "IN_PROGRESS":
-                        return 2;
-                    case "FINISHED":
-                        return 1;
-                    default:
-                        return 0;
-                }
+                return 2;
+
             }
         };
     }
